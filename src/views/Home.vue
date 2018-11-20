@@ -1,7 +1,7 @@
 <template>
   <div class="home">
-    <h1>{{ message }}</h1>
-    <p v-for='place in places'> {{places.name}} </p>
+    <h1>{{ message }}</h1><br>
+    <p v-for='place in places'> {{place.name}}.  Located at {{place.address}}</p>
   </div>
 </template>
 
@@ -13,14 +13,14 @@
   export default {
     data: function() {
       return {
-        message: "Weflcome to Vue.js!",
+        message: "aWeflcome to Vue.js!",
         places: []
       };
     },
     created: function() {
       axios.get('http://localhost:3000/api/places').then(function(response) {
         console.log(response.data);
-        this.recipe = response.data;
+        this.places = response.data;
       }.bind(this));
     },
 
